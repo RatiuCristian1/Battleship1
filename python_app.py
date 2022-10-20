@@ -1,39 +1,64 @@
-import string
-import random
-from xml.dom.minidom import CharacterData
-from xml.dom.pulldom import CHARACTERS
-
-characters = list(string.ascii_letters + string.digits + "!@#$%^&*()")
-
-def generate_password():
-    password_lenght = int(input("How long would you like your password to be? "))
-
-    random.shuffle(characters)
+# a dictionary that stores questions and answer
+# have a variable that tracks the score of the playes
+# loop through the dictionary using the key values pairs
+#display each question to the user and allow them to answer
+# tell them if they are right or wrong
+# show the final result when quiz is complited
 
 
-    password = []
+quiz = {
+    "question1": {
+        "question": "What is the capital of France?",
+        "answer": "Paris"
+    },
+    "question2": {
+        "question": "What is the capital of Germany?",
+        "answer": "Berlin"
+    },
+    "question3": {
+        "question": "What is the capital of Italy?",
+        "answer": "Rome"
+    },
+    "question4": {
+        "question": "What is the capital of Spain?",
+        "answer": "Madrid"
+    },
+    "question5": {
+        "question": "What is the capital of Austria?",
+        "answer": "Wien"
+    },
+    "question6": {
+        "question": "What is the capital of England?",
+        "answer": "London"
+    },
+    "question7": {
+        "question": "What is the capital of Holland?",
+        "answer": "Amsterdam"
+    },
+}
 
-    for x in range(password_lenght):
-        password.append(random.choice(characters))
+score = 0
 
-        random.shuffle(password)
+for key, value in quiz.items():
+    print(value['question'])
+    answer = input("Answer? ")
+    
+    if answer.lower() == value['answer'].lower():
+        print('Corect')
+        score += 1
+        print("Your scrore is: " + str(score))
+    else:
+        print("Wrong!")
+        print("The answer is : " + value['answer']) 
+        print("Your score is : " + str(score))   
 
 
-        password = "".join(password)
-
-        print(password)
 
 
 
 
-option = input("Do you want to generate a password? (Yes/No): ")
 
-if option == "Yes":
-    generate_password()
-elif option == "No":
-        print("Program ended")
-        quit()    
-else:
-    print("Invalid input, please input Yes or No")
-    quit()    
-         
+
+
+
+
